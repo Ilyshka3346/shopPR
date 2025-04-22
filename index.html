@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PR - экшн-камеры и техника</title>
+    <title>PR - экшн-камеры и одежда</title>
     <style>
         * {
             box-sizing: border-box;
@@ -14,6 +14,9 @@
             padding: 0;
             background-color: #f9f9f9;
             color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         header {
             background-color: #000000;
@@ -21,7 +24,6 @@
             padding: 20px 0;
             text-align: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: relative;
         }
         .logo {
             font-size: 2em;
@@ -60,11 +62,12 @@
             max-width: 1200px;
             margin: 20px auto;
             padding: 0 15px;
+            flex: 1;
         }
         .products {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
+            gap: 20px;
         }
         .product {
             background-color: white;
@@ -73,6 +76,8 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: transform 0.3s;
             border: 1px solid #eeeeee;
+            display: flex;
+            flex-direction: column;
         }
         .product:hover {
             transform: translateY(-5px);
@@ -88,7 +93,10 @@
             color: #333;
         }
         .product-info {
-            padding: 12px;
+            padding: 15px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
         .product-title {
             font-weight: bold;
@@ -102,59 +110,30 @@
             font-size: 1.1em;
             margin-bottom: 12px;
         }
-        .add-to-cart {
+        .wb-button {
             background-color: #000000;
             color: #ffeb3b;
             border: none;
-            padding: 8px 12px;
+            padding: 10px 15px;
             border-radius: 5px;
             cursor: pointer;
             width: 100%;
             font-weight: bold;
             transition: background-color 0.3s;
             font-size: 0.9em;
+            text-align: center;
+            text-decoration: none;
+            margin-top: auto;
         }
-        .add-to-cart:hover {
+        .wb-button:hover {
             background-color: #333333;
-        }
-        .cart-icon {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            background-color: #000000;
-            color: #ffeb3b;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3em;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            cursor: pointer;
-            z-index: 100;
-        }
-        .cart-count {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background-color: #ffeb3b;
-            color: #000000;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            font-size: 0.6em;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
         }
         footer {
             background-color: #000000;
             color: #ffeb3b;
             text-align: center;
-            padding: 15px 0;
-            margin-top: 30px;
+            padding: 20px 0;
+            margin-top: 40px;
             font-size: 0.9em;
         }
         .contacts-modal {
@@ -200,16 +179,10 @@
         @media (max-width: 600px) {
             .logo {
                 font-size: 1.8em;
-                padding-right: 40px;
             }
             .product-image {
                 height: 150px;
                 font-size: 35px;
-            }
-            .cart-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2em;
             }
         }
     </style>
@@ -217,7 +190,7 @@
 <body>
     <header>
         <div class="logo">PR</div>
-        <div style="color: #ffffff; font-size: 0.9em;">Экшн-камеры и техника</div>
+        <div style="color: #ffffff; font-size: 0.9em;">Экшн-камеры и одежда</div>
     </header>
     <nav>
         <ul>
@@ -227,11 +200,6 @@
         </ul>
     </nav>
     
-    <div class="cart-icon" onclick="toggleCart()">
-        🛒
-        <div class="cart-count" id="cart-count">0</div>
-    </div>
-    
     <div class="container">
         <h2 style="font-size: 1.3em;">Наши товары</h2>
         <div class="products">
@@ -239,8 +207,17 @@
                 <div class="product-image">📷</div>
                 <div class="product-info">
                     <div class="product-title">Экшн-камера PR Action 4K</div>
-                    <div class="product-price">8 999 ₽</div>
-                    <button class="add-to-cart" onclick="addToCart('Экшн-камера PR Action 4K', 8999)">В корзину</button>
+                    <div class="product-price">6 575 ₽</div>
+                    <a href="https://www.wildberries.ru/catalog/279302015/detail.aspx" class="wb-button">Купить на Wildberries</a>
+                </div>
+            </div>
+            
+            <div class="product">
+                <div class="product-image">👕</div>
+                <div class="product-info">
+                    <div class="product-title">Футболка с принтом Clash Royale</div>
+                    <div class="product-price">1 299 ₽</div>
+                    <a href="https://wildberries.ru/catalog/234151939/detail.aspx" class="wb-button">Купить на Wildberries</a>
                 </div>
             </div>
         </div>
@@ -250,22 +227,6 @@
         <p>© 2025 PR. Все права защищены.</p>
         <p>Email: prshop127@gmail.com</p>
     </footer>
-    
-    <!-- Корзина -->
-    <div id="cart" style="display: none; position: fixed; top: 0; right: 0; width: 100%; max-width: 350px; height: 100%; background-color: white; box-shadow: -2px 0 10px rgba(0,0,0,0.1); z-index: 99; padding: 15px; overflow-y: auto;">
-        <h2 style="margin-top: 0; color: #000000; font-size: 1.3em;">Ваша корзина</h2>
-        <div id="cart-items" style="margin-bottom: 15px;">
-            <p style="text-align: center; font-size: 0.9em;">Корзина пуста</p>
-        </div>
-        <div style="border-top: 1px solid #eee; padding-top: 12px;">
-            <div style="display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 12px; color: #000000; font-size: 1em;">
-                <span>Итого:</span>
-                <span id="cart-total">0 ₽</span>
-            </div>
-            <button style="background-color: #000000; color: #ffeb3b; border: none; padding: 10px 12px; border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; font-size: 0.9em;" onclick="checkout()">Оформить заказ на Wildberries</button>
-        </div>
-        <button style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 1.3em; cursor: pointer; color: #000000;" onclick="toggleCart()">×</button>
-    </div>
     
     <!-- Модальное окно контактов -->
     <div id="contacts-modal" class="contacts-modal">
@@ -278,81 +239,12 @@
     </div>
     
     <script>
-        let cart = [];
-        
-        function toggleCart() {
-            const cartElement = document.getElementById('cart');
-            if (cartElement.style.display === 'none' || cartElement.style.display === '') {
-                cartElement.style.display = 'block';
-            } else {
-                cartElement.style.display = 'none';
-            }
-        }
-        
         function showContacts() {
             document.getElementById('contacts-modal').style.display = 'flex';
         }
         
         function hideContacts() {
             document.getElementById('contacts-modal').style.display = 'none';
-        }
-        
-        function addToCart(name, price) {
-            const existingItem = cart.find(item => item.name === name);
-            
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    name: name,
-                    price: price,
-                    quantity: 1
-                });
-            }
-            
-            updateCart();
-        }
-        
-        function updateCart() {
-            const cartItemsElement = document.getElementById('cart-items');
-            const cartCountElement = document.getElementById('cart-count');
-            const cartTotalElement = document.getElementById('cart-total');
-            
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            cartCountElement.textContent = totalItems;
-            
-            if (cart.length === 0) {
-                cartItemsElement.innerHTML = '<p style="text-align: center; font-size: 0.9em;">Корзина пуста</p>';
-            } else {
-                let html = '';
-                let total = 0;
-                
-                cart.forEach(item => {
-                    const itemTotal = item.price * item.quantity;
-                    total += itemTotal;
-                    
-                    html += `
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #eee; font-size: 0.9em;">
-                            <div>
-                                <div style="font-weight: bold; color: #000000;">${item.name}</div>
-                                <div style="font-size: 0.9em; color: #666;">${item.price.toLocaleString('ru-RU')} ₽ × ${item.quantity}</div>
-                            </div>
-                            <div style="font-weight: bold; color: #000000;">${itemTotal.toLocaleString('ru-RU')} ₽</div>
-                        </div>
-                    `;
-                });
-                
-                cartItemsElement.innerHTML = html;
-                cartTotalElement.textContent = `${total.toLocaleString('ru-RU')} ₽`;
-            }
-        }
-        
-        function checkout() {
-            if (cart.length === 0) {
-                return;
-            }
-            
-            window.location.href = "https://wildberries.ru/catalog/279302015/detail.aspx";
         }
     </script>
 </body>
